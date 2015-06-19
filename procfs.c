@@ -18,6 +18,9 @@ procfsisdir(struct inode *ip) {
 
 void 
 procfsiread(struct inode* dp, struct inode *ip) {
+  if (ip->inum < NUMBER_OF_INODES){
+
+  }
 }
 
 int
