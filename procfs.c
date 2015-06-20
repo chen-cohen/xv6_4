@@ -22,6 +22,7 @@ procfsiread(struct inode* dp, struct inode *ip) {
     ip->type = T_DEV;
     ip->flags = ip->flags || I_VALID;
     ip->nlink = 1;
+    ip->major = PROCFS;
   }
 }
 
