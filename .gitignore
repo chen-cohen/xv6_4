@@ -8,7 +8,7 @@
 # Precompiled Headers
 *.gch
 *.pch
-
+*.txt
 # Libraries
 *.lib
 *.a
