@@ -13,11 +13,16 @@
 
 int 
 procfsisdir(struct inode *ip) {
-  return 0;
+  return (ip->type != T_DIR) ? 0 : 1;
 }
 
 void 
 procfsiread(struct inode* dp, struct inode *ip) {
+  if (ip->inum > NUMBER_OF_INODES){
+    ip->type = T_DEV;
+    ip->flags = ip->flags || I_VALID;
+    ip->nlink = 1;
+  }
 }
 
 int
