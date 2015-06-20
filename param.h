@@ -11,3 +11,13 @@
 #define LOGSIZE      (MAXOPBLOCKS*3)  // max data sectors in on-disk log
 #define NBUF         (MAXOPBLOCKS*3)  // size of disk block cache
 #define NUMBER_OF_INODES   200
+
+#define  CMDLINE    0
+#define  CWD        1
+#define  EXE        2
+#define  FDINFO     3
+#define  STATUS     4
+
+#define ROOT_DIR 0
+#define PID_DIR 1
+#define FILE_DIR 2

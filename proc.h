@@ -73,3 +73,5 @@ struct proc {
 //   original data and bss
 //   fixed-size stack
 //   expandable heap
+
+extern int createProccesPool(struct proc* onlineProcessContext[NPROC]);

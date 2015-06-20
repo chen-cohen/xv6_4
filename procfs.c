@@ -11,6 +11,22 @@
 #include "proc.h"
 #include "x86.h"
 
+
+struct proc* onlineProcessContext[NPROC];
+int onlineProcessCounter = 0;
+
+
+void
+initProcess(struct inode *ip) {
+  createProccesPool(onlineProcessContext);
+  ip->size = onlineProcessCounter * sizeof(struct dirent);
+}
+
+void initDirecotryEntry(struct dirent *directoryEntry, struct inode *ip, char* command, uint commandLength){
+  directoryEntry->inum = ip->inum;
+  memmove(directoryEntry->name, command, commandLength);
+}
+
 int 
 procfsisdir(struct inode *ip) {
   return (ip->type != T_DIR) ? 0 : 1;
@@ -28,8 +44,21 @@ procfsiread(struct inode* dp, struct inode *ip) {
 
 int
 procfsread(struct inode *ip, char *dst, int off, int n) {
+  int file_descriptor;
+  struct proc* proc;
+  struct dirent directoryEntry;
+
+  //
+  if(ip->minor == ROOT_DIR){
+    if (off == 0){
+      initProcess(ip);
+    }
+    if(off / n == 0){
+      initDirecotryEntry(directoryEntry, ip, ".", 2);
+    }
+  }
   return 0;
-}
+};
 
 int
 procfswrite(struct inode *ip, char *buf, int n)

@@ -463,3 +463,15 @@ procdump(void)
     cprintf("\n");
   }
 }
+
+
+int createProccesPool(struct proc* onlineProcessContext[NPROC]){
+  struct proc *process;
+  int ind = 0;
+  for(process=ptable.proc; process<&ptable.proc[NPROC]; process++){
+    if (process->state != UNUSED){
+      onlineProcessContext[ind++] = process;
+    }
+  }
+  return ind;
+}
