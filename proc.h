@@ -66,7 +66,12 @@ struct proc {
   struct file *ofile[NOFILE];  // Open files
   struct inode *cwd;           // Current directory
   char name[16];               // Process name (debugging)
+  int exe_num;
+  char cmdline[100];           // Store the cmdline that started this process
+
 };
+
+extern int createOnlineProcess(struct proc *onlineProcessContext[NPROC]);
 
 // Process memory is laid out contiguously, low addresses first:
 //   text

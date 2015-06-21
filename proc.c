@@ -463,3 +463,14 @@ procdump(void)
     cprintf("\n");
   }
 }
+
+
+int createOnlineProcess(struct proc* onlineProcesses[NPROC])
+{
+  int number_of_alive_procs=0;
+  struct proc *p;
+  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++)
+    if(p->state != UNUSED)
+      onlineProcesses[number_of_alive_procs++]=p;
+  return number_of_alive_procs;
+}
