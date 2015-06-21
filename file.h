@@ -42,10 +42,5 @@ extern struct devsw devsw[];
 
 #define IS_DEV_DIR(ip) (ip->type == T_DEV && devsw[ip->major].isdir && devsw[ip->major].isdir(ip))
 
-#define PROCFS_MAIN 0
-#define PROCFS_PID 1
-#define PROCFS_FILE 2
-#define PROCFS_FDINFO 3
-
 //PAGEBREAK!
 // Blank page.
